@@ -695,6 +695,7 @@ void MainWindow::updateMenuItems()
     menuModesAboutToShow();
     menuChartAboutToShow();
     menuStitchesAboutToShow();
+    updateGridActions();
 }
 
 void MainWindow::filePrint()
@@ -1631,6 +1632,16 @@ void MainWindow::setEditMode(int mode)
     }
 }
 
+void MainWindow::updateGridActions()
+{
+    bool state = hasTab();
+    ui->actionGridNone->setEnabled(state);
+    ui->actionGridSquare->setEnabled(state);
+    ui->actionGridRound->setEnabled(state);
+    ui->actionGridTriangle->setEnabled(state);
+    ui->actionNextGridMode->setEnabled(state);
+}
+
 void MainWindow::menuChartAboutToShow()
 {
     bool state = hasTab();
@@ -1730,6 +1741,8 @@ QTabWidget* MainWindow::tabWidget()
 
 void MainWindow::tabChanged(int newTab)
 {
+    updateGridActions(); 
+
     if(newTab == -1)
         return;
 
