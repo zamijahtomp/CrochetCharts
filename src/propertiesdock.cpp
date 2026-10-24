@@ -140,6 +140,7 @@ void PropertiesDock::tabChanged(int tabNumber)
 {
 
     if(tabNumber == -1) {
+        mScene = 0;
         clearUi();
         return;
     }
@@ -289,7 +290,7 @@ void PropertiesDock::updateDialogUi()
 {
 
     clearUi();
-    if(closing)
+    if(closing || !mScene)
         return;
 
     int count = mScene->selectedItems().count();

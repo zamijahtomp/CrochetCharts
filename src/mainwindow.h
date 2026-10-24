@@ -198,6 +198,7 @@ private:
     void setupMenus();
     void setupRecentFiles();
     void updateMenuItems();
+    void updateGridActions();
     
     QSortFilterProxyModel *mProxyModel;
     void setupStitchPalette();
