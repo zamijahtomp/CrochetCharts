@@ -1,4 +1,4 @@
-include_directories(${QT_INCLUDES} ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_DIR})
+include_directories(${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_DIR})
 
 file(GLOB crochet_srcs "*.cpp")
 file(GLOB crochet_uis "*.ui")
@@ -8,8 +8,8 @@ set(crochet_resources
     ../stitches/stitches.qrc
     )
 
-qt4_add_resources(crochet_rcc_srcs ${crochet_resources})
-qt4_wrap_ui(crochet_ui_h ${crochet_uis})
+qt5_add_resources(crochet_rcc_srcs ${crochet_resources})
+qt5_wrap_ui(crochet_ui_h ${crochet_uis})
 
 if(WIN32)
     #generate the embeded icon for the exe file.
@@ -42,7 +42,7 @@ else()
             ${crochet_version} ${crochet_win} ${crochet_mac} ${crochet_nix})
 endif()
 
-target_link_libraries(${EXE_NAME} ${QT_LIBRARIES})
+target_link_libraries(${EXE_NAME} Qt5::Widgets Qt5::PrintSupport Qt5::Svg Qt5::Network Qt5::Xml)
 
 if(APPLE)
     #install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME} DESTINATION ../MacOS)
